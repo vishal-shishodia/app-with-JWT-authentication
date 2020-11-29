@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <style>
+        * {
+            top: 0;
+            left: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(222 213 243);
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            /* justify-content: center; */
+            align-items: center;
+
+
+        }
+
+        .row {
+            display: flex;
+            background-color: #f2f2f2;
+            width: 90vw;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 22px;
+        }
+
+        .col-20 {
+            width: 20%;
+
+            /* padding: 12px; */
+            margin: 12px;
+        }
+
+        .row-header {
+            display: flex;
+            background-color: #e8dada;
+            width: 90vw;
+            margin-top: 15px;
+            border-radius: 22px;
+            padding: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row-header">
+            <div class="col-20">Email</div>
+            <div class="col-20">Username</div>
+            <div class="col-20">Address</div>
+            <div class="col-20">Edit Profile</div>
+            <div class="col-20">Delete Profile</div>
+        </div>
+        {% for profile in profiles %}
+        <div class="row">
+            <div class="col-20">
+                {{profile.user.email}}
+            </div>
+            <div class="col-20">
+                {{profile.user.username}}
+            </div>
+            <div class="col-20">
+                {{profile.address}}
+            </div>
+            <div class="col-20">
+                <a href="{% url 'edit' profile.user.pk %}">Edit</a>
+            </div>
+            <div class="col-20">
+                <a href="{% url 'delete' profile.user.pk %}">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+
+
+    </div>
+</body>
+
+</html>
